@@ -1,0 +1,9 @@
+paths:
+  template_path: "templates/template.pptx"
+  image_source: "data/raw_images/"
+  metadata_source: "data/metadata.json"
+  output_folder: "output/"
+
+settings:
+  images_per_slide: 10  # Set to 1 for high detail, or 10 for a grid
+  image_width_inches: 8.0
