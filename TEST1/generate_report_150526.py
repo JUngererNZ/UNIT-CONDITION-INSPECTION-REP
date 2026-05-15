@@ -10,7 +10,6 @@ Output: one .pptx per inspection written to config.output_dir
 """
 
 import argparse
-import io
 import json
 import os
 import sys
@@ -19,7 +18,6 @@ from pathlib import Path
 from datetime import date
 
 import yaml
-from PIL import Image
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
@@ -43,10 +41,6 @@ AMBER       = RGBColor(0xE6, 0x8A, 0x00)
 # ── Slide dimensions (16:9 widescreen) ─────────────────────────────────────────
 SLIDE_W = Inches(13.33)
 SLIDE_H = Inches(7.5)
-
-# ── EMU → pixel conversion at 96 DPI (standard screen resolution) ─────────────
-# 1 inch = 914400 EMU = 96 px  →  1 px = 9525 EMU
-EMU_PER_PX = 9525
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -124,58 +118,6 @@ def _photos_for_inspection(inspection_dir: str) -> list[str]:
     for ext in exts:
         paths.extend(glob.glob(os.path.join(photo_dir, ext)))
     return sorted(set(paths))
-
-
-def _safe_photo_stream(photo_path: str, cell_w_emu: int, cell_h_emu: int,
-                       quality: int = 82, scale_factor: float = 1.5) -> io.BytesIO:
-    """
-    Resize photo to the cell display dimensions (× scale_factor for crispness)
-    and return a compressed JPEG BytesIO buffer.
-
-    This is the key fix for PPTX file size: the original smartphone photo
-    (e.g. 4032×3024 px, ~5 MB) is scaled down to the actual display target
-    before embedding.  Typical cell at 10 photos/slide is ~620×120 px;
-    at scale_factor=1.5 that becomes ~930×180 px — still sharp but ~50–80×
-    smaller than the raw original.
-
-    Args:
-        photo_path:    Absolute path to the source image.
-        cell_w_emu:    Display cell width in EMU (from build_photo_slides).
-        cell_h_emu:    Display cell height in EMU (from build_photo_slides).
-        quality:       JPEG quality 1–95 (config: photo_quality, default 82).
-        scale_factor:  Pixel multiplier over display size for sharpness
-                       (config: photo_scale_factor, default 1.5).
-    """
-    # Convert EMU → pixels at 96 DPI, then apply quality scale factor
-    max_w = int((cell_w_emu / EMU_PER_PX) * scale_factor)
-    max_h = int((cell_h_emu / EMU_PER_PX) * scale_factor)
-
-    img = Image.open(photo_path)
-
-    # Handle MPO (dual-frame JPEG from some cameras)
-    if img.format == "MPO":
-        img.seek(0)
-
-    # Flatten to RGB (drop alpha/palette) — required for JPEG output
-    if img.mode in ("RGBA", "LA", "P"):
-        img = img.convert("RGB")
-    elif img.mode != "RGB":
-        img = img.convert("RGB")
-
-    # Preserve EXIF orientation so photos aren't sideways in PPT
-    try:
-        from PIL import ImageOps
-        img = ImageOps.exif_transpose(img)
-    except Exception:
-        pass
-
-    # Downscale to fit within (max_w × max_h), maintaining aspect ratio
-    img.thumbnail((max_w, max_h), Image.LANCZOS)
-
-    buf = io.BytesIO()
-    img.save(buf, format="JPEG", quality=quality, optimize=True)
-    buf.seek(0)
-    return buf
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -304,21 +246,8 @@ def build_checklist_slide(prs: Presentation, data: dict, config: dict):
                  font_size=8, colour=DARK_GREY, wrap=True)
 
 
-def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: int,
-                       ba_number: str, photo_quality: int = 82, photo_scale_factor: float = 1.5):
-    """
-    Build one or more 2-column photo grid slides.
-
-    Photos are pre-resized by _safe_photo_stream to the actual cell display
-    dimensions (× photo_scale_factor) before embedding.  This keeps the
-    embedded image data small while maintaining visual crispness.
-
-    photo_quality:      JPEG quality 1–95.  82 = near-lossless for inspection
-                        photos; lower to 70–75 for maximum compression.
-    photo_scale_factor: Pixel multiplier over the PPT display cell size.
-                        1.0 = exact fit (smallest file), 1.5 = default (sharp),
-                        2.0 = retina-style (larger file but very crisp).
-    """
+def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: int, ba_number: str):
+    """Build one or more 2-column photo grid slides."""
     cols       = 2
     rows       = photos_per_slide // cols
     pad        = Inches(0.12)
@@ -349,17 +278,7 @@ def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: i
             top  = header_h + pad + row * (cell_h + pad)
 
             try:
-                # Pre-resize to cell display size before embedding.
-                # This is the primary fix for large PPTX output.
-                stream = _safe_photo_stream(
-                    photo_path,
-                    cell_w_emu=int(cell_w),
-                    cell_h_emu=int(cell_h),
-                    quality=photo_quality,
-                    scale_factor=photo_scale_factor,
-                )
-                pic = slide.shapes.add_picture(stream, left, top, int(cell_w), int(cell_h))
-
+                pic = slide.shapes.add_picture(photo_path, left, top, cell_w, cell_h)
                 # Keep aspect ratio: shrink to fit inside cell
                 img_w = pic.width
                 img_h = pic.height
@@ -369,7 +288,6 @@ def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: i
                 # Centre in cell
                 pic.left = int(left + (cell_w - pic.width)  / 2)
                 pic.top  = int(top  + (cell_h - pic.height) / 2)
-
             except Exception as e:
                 print(f"  ⚠  Could not insert photo {photo_path}: {e}")
 
@@ -392,8 +310,6 @@ def generate_report(inspection_dir: str, config: dict, output_dir: str):
 
     photos           = _photos_for_inspection(inspection_dir)
     photos_per_slide = int(config["report"].get("photos_per_slide", 6))
-    photo_quality    = int(config["report"].get("photo_quality", 82))
-    photo_scale_factor = float(config["report"].get("photo_scale_factor", 1.5))
     logo_path        = config["paths"].get("logo") or None
     if logo_path and not os.path.exists(logo_path):
         logo_path = None
@@ -405,11 +321,7 @@ def generate_report(inspection_dir: str, config: dict, output_dir: str):
     build_cover_slide(prs, data, config, logo_path)
     build_checklist_slide(prs, data, config)
     if photos:
-        print(f"     📷  {len(photos)} photos → resizing to cell display dimensions "
-              f"(quality={photo_quality}, scale={photo_scale_factor}×)")
-        build_photo_slides(prs, photos, photos_per_slide, ba,
-                           photo_quality=photo_quality,
-                           photo_scale_factor=photo_scale_factor)
+        build_photo_slides(prs, photos, photos_per_slide, ba)
     else:
         print(f"     ⚠  No photos found in {inspection_dir}/photos/")
 

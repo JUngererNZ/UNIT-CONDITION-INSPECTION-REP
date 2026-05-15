@@ -8,8 +8,25 @@ paths:
 report:
   company_name: "FML FREIGHT SOLUTIONS"
   tagline: "SERVICE DRIVEN SOLUTIONS"
-  photos_per_slide: 10                     # 2-column grid; must be even (4, 6, 8, 10, 12)
+  photos_per_slide: 10                    # 2-column grid; must be even (4, 6, 8, 10, 12)
   output_filename_pattern: "{ba_number}_CONDITION_INSPECTION_REPORT.pptx"
+
+  # ── Photo compression settings ─────────────────────────────────────────────
+  # Photos are pre-resized to the PPT cell display size before embedding.
+  # This replicates the ops manager's manual 35-41% resize — programmatically.
+  #
+  # photo_quality:      JPEG quality 1–95 for embedded photos.
+  #                     82 = near-lossless for inspection records (default).
+  #                     70 = good balance of size vs quality.
+  #                     60 = maximum compression, still readable on screen.
+  #
+  # photo_scale_factor: Pixel multiplier over the PPT display cell size.
+  #                     1.0 = exact fit (smallest file, can look soft).
+  #                     1.5 = default — sharp without bloating the file.
+  #                     2.0 = retina-style crispness (larger file).
+  #                     Increase if photos look blurry; decrease to reduce MB.
+  photo_quality: 82
+  photo_scale_factor: 1.5
 
 # Checklist items rendered in the report table (order matters)
 checklist_items:
