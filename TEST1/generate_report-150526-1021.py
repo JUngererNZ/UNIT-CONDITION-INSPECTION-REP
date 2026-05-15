@@ -28,8 +28,7 @@ from pptx.util import Inches, Pt
 
 
 # ── Brand colours ──────────────────────────────────────────────────────────────
-DARK_TEAL   = RGBColor(0x00, 0x3D, 0x3B)   # slide background (checklist / photo slides)
-COVER_BG    = RGBColor(0x00, 0x2C, 0x2B)   # cover background — matched to FML logo pixel (0,44,43)
+DARK_TEAL   = RGBColor(0x00, 0x3D, 0x3B)   # slide background
 MID_TEAL    = RGBColor(0x00, 0x7A, 0x7A)   # accents
 LIGHT_TEAL  = RGBColor(0x5F, 0xC4, 0xBF)   # secondary text / logo
 WHITE       = RGBColor(0xFF, 0xFF, 0xFF)
@@ -186,68 +185,35 @@ def _safe_photo_stream(photo_path: str, cell_w_emu: int, cell_h_emu: int,
 def build_cover_slide(prs: Presentation, data: dict, config: dict, logo_path: str | None):
     layout = prs.slide_layouts[6]   # blank
     slide = prs.slides.add_slide(layout)
-    _set_bg(slide, COVER_BG)        # matched to logo background pixel
+    _set_bg(slide, DARK_TEAL)
 
-    # ── Logo — centred horizontally, upper-middle of portrait page ──
-    # Logo file is 450×260 px (aspect 1.73:1).  At width=6.2" → height≈3.58"
-    logo_w    = Inches(6.2)
-    logo_left = (SLIDE_W - logo_w) / 2   # centred
-    logo_top  = Inches(3.8)
-
-    if logo_path and os.path.exists(logo_path):
-        slide.shapes.add_picture(logo_path, int(logo_left), int(logo_top), int(logo_w))
-    else:
-        # Fallback decorative "F" lines if no logo file found
-        _add_rect(slide, Inches(2.8), Inches(1.5), Inches(0.08), Inches(4.5), LIGHT_TEAL)
-        _add_rect(slide, Inches(2.8), Inches(1.5), Inches(2.5),  Inches(0.08), LIGHT_TEAL)
-        _add_rect(slide, Inches(2.8), Inches(3.7), Inches(1.8),  Inches(0.08), MID_TEAL)
-        _add_textbox(slide,
-                     Inches(0.3), Inches(6.3), Inches(6.8), Inches(0.9),
-                     config["report"]["company_name"],
-                     font_size=28, bold=True, colour=LIGHT_TEAL,
-                     align=PP_ALIGN.CENTER, font_name="Arial Black")
-        _add_textbox(slide,
-                     Inches(0.3), Inches(7.2), Inches(6.8), Inches(0.5),
-                     config["report"]["tagline"],
-                     font_size=11, bold=False, colour=MID_TEAL,
-                     align=PP_ALIGN.CENTER, font_name="Calibri Light")
-
-    # ── Horizontal rule below logo ──
-    rule_top = Inches(8.0)
-    _add_rect(slide, Inches(0.4), rule_top, SLIDE_W - Inches(0.8), Inches(0.03), MID_TEAL)
-
-    # ── Report details below rule ──
+    # Report type label (top)
     _add_textbox(slide,
-                 Inches(0.4), Inches(8.2), Inches(6.6), Inches(0.5),
-                 "BARTRAC UNIT CONDITION INSPECTION REPORT",
-                 font_size=11, bold=True, colour=WHITE,
-                 align=PP_ALIGN.CENTER, font_name="Calibri")
+                 Inches(0.3), Inches(0.25), Inches(6.8), Inches(0.6),
+                 "FML WHSE  —  BARTRAC STORAGE UNITS INSPECTION",
+                 font_size=14, bold=True, colour=WHITE,
+                 align=PP_ALIGN.LEFT, font_name="Calibri")
+
+    # Accent bar below header
+    _add_rect(slide, Inches(0.3), Inches(0.9), Inches(4.0), Inches(0.04), MID_TEAL)
+
+    # Decorative "F" motif — centred in portrait canvas
+    _add_rect(slide, Inches(2.8),  Inches(1.5), Inches(0.08), Inches(4.5), LIGHT_TEAL)
+    _add_rect(slide, Inches(2.8),  Inches(1.5), Inches(2.5),  Inches(0.08), LIGHT_TEAL)
+    _add_rect(slide, Inches(2.8),  Inches(3.7), Inches(1.8),  Inches(0.08), MID_TEAL)
+
+    # Large company name — lower third of portrait page
+    _add_textbox(slide,
+                 Inches(0.3), Inches(11.1), Inches(6.8), Inches(1.0),
+                 config["report"]["company_name"],
+                 font_size=30, bold=True, colour=LIGHT_TEAL,
+                 align=PP_ALIGN.LEFT, font_name="Arial Black")
 
     _add_textbox(slide,
-                 Inches(0.4), Inches(8.85), Inches(6.6), Inches(0.65),
-                 f"BA NUMBER:  {data.get('ba_number', '')}",
-                 font_size=22, bold=True, colour=LIGHT_TEAL,
-                 align=PP_ALIGN.CENTER, font_name="Arial Black")
-
-    _add_textbox(slide,
-                 Inches(0.4), Inches(9.6), Inches(6.6), Inches(0.4),
-                 data.get("unit_description", ""),
-                 font_size=12, bold=False, colour=OFF_WHITE,
-                 align=PP_ALIGN.CENTER, font_name="Calibri")
-
-    _add_textbox(slide,
-                 Inches(0.4), Inches(10.1), Inches(6.6), Inches(0.35),
-                 f"INSPECTION DATE:  {data.get('inspection_date', '')}",
-                 font_size=10, bold=False, colour=MID_TEAL,
-                 align=PP_ALIGN.CENTER, font_name="Calibri")
-
-    # ── Bottom accent bar ──
-    _add_rect(slide, Inches(0), Inches(12.9), SLIDE_W, Inches(0.43), DARK_TEAL)
-    _add_textbox(slide,
-                 Inches(0.3), Inches(12.93), Inches(6.8), Inches(0.35),
-                 config["report"].get("tagline", ""),
-                 font_size=8, bold=False, colour=LIGHT_TEAL,
-                 align=PP_ALIGN.CENTER, font_name="Calibri Light")
+                 Inches(0.3), Inches(12.1), Inches(6.8), Inches(0.5),
+                 config["report"]["tagline"],
+                 font_size=13, bold=False, colour=MID_TEAL,
+                 align=PP_ALIGN.LEFT, font_name="Calibri Light")
 
 
 def build_checklist_slide(prs: Presentation, data: dict, config: dict):

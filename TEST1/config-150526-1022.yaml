@@ -3,7 +3,7 @@
 paths:
   inspections_dir: "./inspections"        # Root folder; each subfolder = one BA number
   output_dir: "./output"                  # Generated .pptx files land here
-  logo: "./assets/fml-company-logo.png"   # FML logo PNG — place file in assets/ folder
+  logo: "./assets/fml_logo.png"           # Optional: path to FML logo PNG (leave blank to skip)
 
 report:
   company_name: "FML FREIGHT SOLUTIONS"

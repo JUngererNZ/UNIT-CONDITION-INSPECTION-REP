@@ -144,3 +144,57 @@ Generate report
 
 15/05/2026 09:53:00
 Magic, I think we have a MVP!!!!
+
+
+--------------------------------
+
+this is the company logo
+this must be on the 1st page of the report
+currently on the first page, the formating is not great to look at
+the logo can be used to place on first page
+if you look at the logo image, the green colour is darker than the page 1 colour
+
+10:18
+Claude responded: Logo is 450×260px (landscape, wide).
+
+Architected professional cover page layout matching logo's darker teal background
+Architected professional cover page layout matching logo's darker teal background
+Logo is 450×260px (landscape, wide). Background colour from the file is (0, 44, 43) — confirmed darker than the current DARK_TEAL (0, 61, 59). I'll add a COVER_BG constant matched to the logo exactly and redesign the cover around it.
+
+
+Edited 2 files
+Edited 2 files
+Now update the config to point to the uploaded logo filename:
+
+
+Update logo path in config to match uploaded filename
+Update logo path in config to match uploaded filename
+Quick sanity check:
+
+
+Ran a command, read a file
+Ran a command, read a file
+What changed:
+
+Cover background — new COVER_BG = RGBColor(0x00, 0x2C, 0x2B) sampled directly from the logo file's pixel data (0, 44, 43). The logo will now sit seamlessly against the slide — no visible colour mismatch.
+
+Cover layout (portrait, top → bottom):
+
+Position	Content
+top=3.8"	FML logo, centred, 6.2" wide (preserves aspect ratio)
+top=8.0"	Thin MID_TEAL horizontal rule
+top=8.2"	BARTRAC UNIT CONDITION INSPECTION REPORT — white, centred
+top=8.85"	BA number — large (22pt), LIGHT_TEAL, centred
+top=9.6"	Unit description — off-white, centred
+top=10.1"	Inspection date — MID_TEAL, centred
+top=12.9"	Bottom DARK_TEAL accent bar with tagline
+Fallback — if the logo file is missing, the decorative F-motif and text boxes render instead (no crash).
+
+File placement — copy fml-company-logo.png into your assets/ folder next to generate_report.py. The config now points to ./assets/fml-company-logo.png.
+
+
+Generate report
+PY 
+
+Config
+YAML 
