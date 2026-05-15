@@ -139,3 +139,7 @@ inspection-tool/
 - If a unit has more photos than `photos_per_slide`, the script creates additional photo slides automatically.
 - The checklist item order in the report is driven by `checklist_items` in `config.yaml`, not the JSON key order.
 - `inspection_checklist.md` is an optional human-readable reference. It is not read by the script.
+
+
+## 15/05/2026 09:53:00
+**Magic, I think we have a MVP!!!!**

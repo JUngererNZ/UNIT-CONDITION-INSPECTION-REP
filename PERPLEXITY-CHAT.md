@@ -68,3 +68,79 @@ PY
 
 Config
 YAML 
+
+
+You said: output report to be in portrait,
+output report to be in portrait, 
+add 2 pages blank after page 2
+
+09:37
+Claude responded: Good, I have the full file.
+
+Orchestrated portrait layout conversion and blank slide insertion
+Orchestrated portrait layout conversion and blank slide insertion
+Good, I have the full file. Three surgical edits needed: swap dimensions, remap all coordinates for portrait, add the blank slide function and calls.
+
+
+Edited 6 files
+Edited 6 files
+Quick sanity-check on the final file:
+
+
+Verify key lines in the output file
+Verify key lines in the output file
+All clean.
+
+
+Presented file
+Presented file
+What changed:
+
+Portrait orientation — SLIDE_W / SLIDE_H swapped to 7.5" × 13.33". Every hardcoded coordinate was remapped:
+
+Element	Before (landscape)	After (portrait)
+Slide canvas	13.33 × 7.5"	7.5 × 13.33"
+Company name	left=0.3", top=5.6", size=44pt	left=0.3", top=11.1", size=30pt
+Tagline	top=6.45"	top=12.1"
+Decorative F	left=5.5" (off-screen in portrait)	left=2.8" (centred)
+Table width	12.8"	7.0"
+Col widths	[2.6, 1.1, 1.1, 7.8]	[1.44, 0.61, 0.61, 4.34]
+Header/meta text width	12.0–12.5"	6.8"
+The photo grid recalculates automatically from SLIDE_W/SLIDE_H — in portrait at 10 photos/slide each cell is now ~3.57" × 2.43" which is substantially taller than the old landscape cells.
+
+Two blank pages after page 2 — build_blank_slide() added and called twice between the checklist and photo slides. Pages render as plain OFF_WHITE — no content, no header. If you want "This page intentionally left blank" text on them, easy to add.
+
+
+Generate report
+PY 
+You said: "This page intentionally left blank" text on them, easy to add.
+"This page intentionally left blank" text on them, easy to add.
+answer: yes
+for in case the images need to be reworked or other information added into
+
+09:41
+Claude responded: Done.
+
+Identified straightforward solution for adding placeholder text
+Identified straightforward solution for adding placeholder text
+Done. The text sits vertically centred on the page (top=6.4" on a 13.33" slide), rendered in italic light grey — visible enough to be clear, unobtrusive enough not to look like content. When the ops team adds photos or notes to those pages, they just delete the text box and fill the slide.
+
+
+Generate report
+PY 
+
+
+2x blank pages inserted, to be same format (black page with green top bar header) as the pictures
+
+09:49
+Claude responded: Done.
+
+Replicated photo slide styling for blank pages
+Replicated photo slide styling for blank pages
+Done. The blank pages now match the photo slide exactly — dark grey background, same Inches(0.45) teal header bar, same font/size/bold/colour. Header label reads NOTES / ADDITIONAL INFORMATION so it's clear what the space is reserved for. The "intentionally left blank" notice sits mid-page in MID_GREY (visible against the dark bg but clearly not content).
+
+
+Generate report
+
+15/05/2026 09:53:00
+Magic, I think we have a MVP!!!!

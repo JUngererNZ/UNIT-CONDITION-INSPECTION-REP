@@ -378,25 +378,16 @@ def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: i
 
 
 def build_blank_slide(prs: Presentation):
-    """Blank reserved slide — styled to match photo slides (dark bg + teal header bar)."""
+    """Insert an intentionally blank off-white slide (reserved for rework/additions)."""
     layout = prs.slide_layouts[6]
     slide  = prs.slides.add_slide(layout)
-    _set_bg(slide, DARK_GREY)
-
-    # Teal header bar — identical to photo slides
-    header_h = Inches(0.45)
-    _add_rect(slide, Inches(0), Inches(0), SLIDE_W, header_h, DARK_TEAL)
-    _add_textbox(slide, Inches(0.2), Inches(0.08), Inches(7.0), Inches(0.32),
-                 "NOTES  /  ADDITIONAL INFORMATION",
-                 font_size=12, bold=True, colour=WHITE,
-                 align=PP_ALIGN.LEFT, font_name="Calibri")
-
-    # Centred notice in the body
+    _set_bg(slide, OFF_WHITE)
+    # Centred notice — italic, mid-grey, unobtrusive
     _add_textbox(slide,
                  Inches(0), Inches(6.4), SLIDE_W, Inches(0.4),
                  "This page intentionally left blank.",
                  font_size=10, bold=False, italic=True,
-                 colour=MID_GREY, align=PP_ALIGN.CENTER,
+                 colour=LIGHT_GREY, align=PP_ALIGN.CENTER,
                  font_name="Calibri")
     return slide
 

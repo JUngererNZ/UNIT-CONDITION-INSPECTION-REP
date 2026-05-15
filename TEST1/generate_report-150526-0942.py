@@ -40,9 +40,9 @@ RED_DAMAGE  = RGBColor(0xCC, 0x22, 0x22)
 GREEN_OK    = RGBColor(0x22, 0x88, 0x44)
 AMBER       = RGBColor(0xE6, 0x8A, 0x00)
 
-# ── Slide dimensions (portrait A4-ratio) ───────────────────────────────────────
-SLIDE_W = Inches(7.5)
-SLIDE_H = Inches(13.33)
+# ── Slide dimensions (16:9 widescreen) ─────────────────────────────────────────
+SLIDE_W = Inches(13.33)
+SLIDE_H = Inches(7.5)
 
 # ── EMU → pixel conversion at 96 DPI (standard screen resolution) ─────────────
 # 1 inch = 914400 EMU = 96 px  →  1 px = 9525 EMU
@@ -187,33 +187,33 @@ def build_cover_slide(prs: Presentation, data: dict, config: dict, logo_path: st
     slide = prs.slides.add_slide(layout)
     _set_bg(slide, DARK_TEAL)
 
-    # Report type label (top)
+    # Large company name at bottom
     _add_textbox(slide,
-                 Inches(0.3), Inches(0.25), Inches(6.8), Inches(0.6),
-                 "FML WHSE  —  BARTRAC STORAGE UNITS INSPECTION",
-                 font_size=14, bold=True, colour=WHITE,
-                 align=PP_ALIGN.LEFT, font_name="Calibri")
-
-    # Accent bar below header
-    _add_rect(slide, Inches(0.3), Inches(0.9), Inches(4.0), Inches(0.04), MID_TEAL)
-
-    # Decorative "F" motif — centred in portrait canvas
-    _add_rect(slide, Inches(2.8),  Inches(1.5), Inches(0.08), Inches(4.5), LIGHT_TEAL)
-    _add_rect(slide, Inches(2.8),  Inches(1.5), Inches(2.5),  Inches(0.08), LIGHT_TEAL)
-    _add_rect(slide, Inches(2.8),  Inches(3.7), Inches(1.8),  Inches(0.08), MID_TEAL)
-
-    # Large company name — lower third of portrait page
-    _add_textbox(slide,
-                 Inches(0.3), Inches(11.1), Inches(6.8), Inches(1.0),
+                 Inches(0.3), Inches(5.6), Inches(12.7), Inches(0.9),
                  config["report"]["company_name"],
-                 font_size=30, bold=True, colour=LIGHT_TEAL,
+                 font_size=44, bold=True, colour=LIGHT_TEAL,
                  align=PP_ALIGN.LEFT, font_name="Arial Black")
 
     _add_textbox(slide,
-                 Inches(0.3), Inches(12.1), Inches(6.8), Inches(0.5),
+                 Inches(0.3), Inches(6.45), Inches(12.7), Inches(0.5),
                  config["report"]["tagline"],
                  font_size=13, bold=False, colour=MID_TEAL,
                  align=PP_ALIGN.LEFT, font_name="Calibri Light")
+
+    # Report type label
+    _add_textbox(slide,
+                 Inches(0.3), Inches(0.2), Inches(12.0), Inches(0.6),
+                 "FML WHSE  —  BARTRAC STORAGE UNITS INSPECTION",
+                 font_size=16, bold=True, colour=WHITE,
+                 align=PP_ALIGN.LEFT, font_name="Calibri")
+
+    # Accent bar
+    _add_rect(slide, Inches(0.3), Inches(0.85), Inches(4.0), Inches(0.04), MID_TEAL)
+
+    # Decorative "F" motif (simple lines)
+    _add_rect(slide, Inches(5.5),  Inches(1.1), Inches(0.08), Inches(3.2), LIGHT_TEAL)
+    _add_rect(slide, Inches(5.5),  Inches(1.1), Inches(1.8),  Inches(0.08), LIGHT_TEAL)
+    _add_rect(slide, Inches(5.5),  Inches(2.5), Inches(1.3),  Inches(0.08), MID_TEAL)
 
 
 def build_checklist_slide(prs: Presentation, data: dict, config: dict):
@@ -224,40 +224,37 @@ def build_checklist_slide(prs: Presentation, data: dict, config: dict):
     # ── Header bar ──
     _add_rect(slide, Inches(0), Inches(0), SLIDE_W, Inches(0.55), DARK_TEAL)
     _add_textbox(slide,
-                 Inches(0.25), Inches(0.08), Inches(6.8), Inches(0.45),
+                 Inches(0.25), Inches(0.08), Inches(12.0), Inches(0.45),
                  "FML WHSE  BARTRAC UNIT CONDITION INSPECTION",
-                 font_size=12, bold=True, colour=WHITE,
+                 font_size=14, bold=True, colour=WHITE,
                  align=PP_ALIGN.LEFT, font_name="Calibri")
 
     # ── Unit meta block ──
     meta_y = Inches(0.65)
     meta_lines = [
-        (f"BA NUMBER:  {data['ba_number']}  —  {data['unit_description']}",   12, True),
-        (f"S/N:  {data['serial_number']}",                                     11, False),
-        (f"VIN:  {data['vin']}",                                               11, False),
-        (f"INSPECTION DATE:  {data['inspection_date']}",                       11, True),
+        (f"BA NUMBER:  {data['ba_number']}  —  {data['unit_description']}",   13, True),
+        (f"S/N:  {data['serial_number']}",                                     12, False),
+        (f"VIN:  {data['vin']}",                                               12, False),
+        (f"INSPECTION DATE:  {data['inspection_date']}",                       12, True),
     ]
     if data.get("status_note"):
         meta_lines.append((data["status_note"], 10, False))
 
     for line_text, fsize, is_bold in meta_lines:
         _add_textbox(slide,
-                     Inches(0.25), meta_y, Inches(6.8), Inches(0.28),
+                     Inches(0.25), meta_y, Inches(12.5), Inches(0.28),
                      line_text,
                      font_size=fsize, bold=is_bold, colour=DARK_GREY,
                      align=PP_ALIGN.LEFT)
         meta_y += Inches(0.27)
 
     # ── Checklist table ──
-    # Portrait usable width: 7.5 - 0.25 margin × 2 = 7.0"
-    # Col proportions scaled from original [2.6, 1.1, 1.1, 7.8] (total 12.6")
-    # → [1.44, 0.61, 0.61, 4.34] → rounded to sum exactly 7.0"
     table_top   = meta_y + Inches(0.1)
     table_left  = Inches(0.25)
-    table_w     = Inches(7.0)
+    table_w     = Inches(12.8)
     row_h       = Inches(0.265)
 
-    col_widths  = [Inches(1.44), Inches(0.61), Inches(0.61), Inches(4.34)]
+    col_widths  = [Inches(2.6), Inches(1.1), Inches(1.1), Inches(7.8)]
     headers     = ["CHECK POINT", "OFFLOADED /\nSTORAGE", "DAMAGE\nNOTED", "COMMENTS"]
 
     # Header row
@@ -266,7 +263,7 @@ def build_checklist_slide(prs: Presentation, data: dict, config: dict):
         _add_rect(slide, x, table_top, cw, row_h, DARK_TEAL)
         _add_textbox(slide, x + Inches(0.04), table_top + Inches(0.02),
                      cw - Inches(0.08), row_h - Inches(0.04),
-                     hdr, font_size=7, bold=True, colour=WHITE,
+                     hdr, font_size=8, bold=True, colour=WHITE,
                      align=PP_ALIGN.CENTER, font_name="Calibri")
         x += cw
 
@@ -283,10 +280,10 @@ def build_checklist_slide(prs: Presentation, data: dict, config: dict):
 
         x = table_left
         cell_data = [
-            (item_name, DARK_GREY, PP_ALIGN.LEFT, 7),
-            (_tick(present, damage), _tick_colour(present, damage), PP_ALIGN.CENTER, 10),
-            ("!" if damage else ("" if not present else ""), RED_DAMAGE if damage else DARK_GREY, PP_ALIGN.CENTER, 10),
-            (comment, MID_GREY, PP_ALIGN.LEFT, 7),
+            (item_name, DARK_GREY, PP_ALIGN.LEFT, 8),
+            (_tick(present, damage), _tick_colour(present, damage), PP_ALIGN.CENTER, 11),
+            ("!" if damage else ("" if not present else ""), RED_DAMAGE if damage else DARK_GREY, PP_ALIGN.CENTER, 11),
+            (comment, MID_GREY, PP_ALIGN.LEFT, 7.5),
         ]
         for (txt, fc, al, fs), cw in zip(cell_data, col_widths):
             _add_rect(slide, x, row_top, cw, row_h, bg, LIGHT_GREY)
@@ -341,7 +338,7 @@ def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: i
         # Thin header
         _add_rect(slide, Inches(0), Inches(0), SLIDE_W, header_h, DARK_TEAL)
         label = f"{ba_number}  —  CONDITION PHOTOS  ({slide_num + 1})"
-        _add_textbox(slide, Inches(0.2), Inches(0.08), Inches(7.0), Inches(0.32),
+        _add_textbox(slide, Inches(0.2), Inches(0.08), Inches(12.0), Inches(0.32),
                      label, font_size=12, bold=True, colour=WHITE,
                      align=PP_ALIGN.LEFT, font_name="Calibri")
 
@@ -377,30 +374,6 @@ def build_photo_slides(prs: Presentation, photos: list[str], photos_per_slide: i
                 print(f"  ⚠  Could not insert photo {photo_path}: {e}")
 
 
-def build_blank_slide(prs: Presentation):
-    """Blank reserved slide — styled to match photo slides (dark bg + teal header bar)."""
-    layout = prs.slide_layouts[6]
-    slide  = prs.slides.add_slide(layout)
-    _set_bg(slide, DARK_GREY)
-
-    # Teal header bar — identical to photo slides
-    header_h = Inches(0.45)
-    _add_rect(slide, Inches(0), Inches(0), SLIDE_W, header_h, DARK_TEAL)
-    _add_textbox(slide, Inches(0.2), Inches(0.08), Inches(7.0), Inches(0.32),
-                 "NOTES  /  ADDITIONAL INFORMATION",
-                 font_size=12, bold=True, colour=WHITE,
-                 align=PP_ALIGN.LEFT, font_name="Calibri")
-
-    # Centred notice in the body
-    _add_textbox(slide,
-                 Inches(0), Inches(6.4), SLIDE_W, Inches(0.4),
-                 "This page intentionally left blank.",
-                 font_size=10, bold=False, italic=True,
-                 colour=MID_GREY, align=PP_ALIGN.CENTER,
-                 font_name="Calibri")
-    return slide
-
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # Main generation logic
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -431,8 +404,6 @@ def generate_report(inspection_dir: str, config: dict, output_dir: str):
 
     build_cover_slide(prs, data, config, logo_path)
     build_checklist_slide(prs, data, config)
-    build_blank_slide(prs)   # page 3 — blank
-    build_blank_slide(prs)   # page 4 — blank
     if photos:
         print(f"     📷  {len(photos)} photos → resizing to cell display dimensions "
               f"(quality={photo_quality}, scale={photo_scale_factor}×)")
