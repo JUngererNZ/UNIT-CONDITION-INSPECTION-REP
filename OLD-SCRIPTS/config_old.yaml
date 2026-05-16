@@ -1,0 +1,32 @@
+# FML Freight Solutions — Inspection Report Generator Config
+
+paths:
+  inspections_dir: "./inspections"        # Root folder; each subfolder = one BA number
+  output_dir: "./output"                  # Generated .pptx files land here
+  logo: "./assets/fml_logo.png"           # Optional: path to FML logo PNG (leave blank to skip)
+
+report:
+  company_name: "FML FREIGHT SOLUTIONS"
+  tagline: "SERVICE DRIVEN SOLUTIONS"
+  photos_per_slide: 10                     # 2-column grid; must be even (4, 6, 8, 10, 12)
+  output_filename_pattern: "{ba_number}_CONDITION_INSPECTION_REPORT.pptx"
+
+# Checklist items rendered in the report table (order matters)
+checklist_items:
+  - PAINTWORK
+  - BODY WORK
+  - WINDOWS
+  - DECALS
+  - ALL LIGHTS
+  - BATTERIES
+  - MIRRORS
+  - RADIO / AERIAL
+  - KEYS
+  - SPEAKERS
+  - ASHTRAY
+  - OPERATORS MANUALS & PARTS MANUALS
+  - WIPER BLADES
+  - TYRES / TRACKS
+  - TOOL BOX
+  - LOOSE PARTS / CRATES
+  - LOCKING PIN
