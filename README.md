@@ -67,18 +67,18 @@ The array mapping loops through items in the order defined by the `checklist_ite
 ```
 
 
-Row Entry String Matching: The checkpoint identifier matches your config blueprint text (e.g. PAINTWORK).Presence Matrix (present): Determines whether the element exists on the physical asset. 
-If false, it sets a high-visibility condition.Damage Exception Matrix (damage): Identifies if structural compromises were flagged during structural review.
-Comments Extraction (comments): Grabs loose textual records and bounds them into the text box container with automatic character-wrapping limits.
-3. Report Status & Colour Calculation LogicThe script tracks flags in tandem through an asset evaluator framework (_tick() and _tick_colour()) to output explicit typographic symbols:
-Condition Matrix
-Rendered SymbolTypography ColourOperational Meaning"present": true + "damage": false✓Green (#228844)
-Component accounted for; passed inspection."present": true + "damage": true!Amber (#E68A00)
-Component present, but structural anomalies or defects were logged."present": false✗Red (#CC2222)
-Component missing, removed, or completely unaccounted for.
-Additionally, whenever "damage": true is evaluated, an independent, high-visibility red ! alert marker is stamped into the isolated DAMAGE NOTED table column to let viewers parse mechanical deficiencies at a glance.
-Technical RequirementsBashpip install python-pptx pyyaml Pillow
-Python 3.10+
+- Row Entry String Matching: The checkpoint identifier matches your config blueprint text (e.g. PAINTWORK).Presence Matrix (present): Determines whether the element exists on the physical asset. 
+- If false, it sets a high-visibility condition.Damage Exception Matrix (damage): Identifies if structural compromises were flagged during structural review.
+- Comments Extraction (comments): Grabs loose textual records and bounds them into the text box container with automatic character-wrapping limits.
+
+### 3. Report Status & Colour Calculation LogicThe script tracks flags in tandem through an asset evaluator framework (_tick() and _tick_colour()) to output explicit typographic symbols:
+- Condition Matrix
+- Rendered SymbolTypography ColourOperational Meaning"present": true + "damage": false✓Green (#228844)
+- Component accounted for; passed inspection."present": true + "damage": true!Amber (#E68A00)
+- Component present, but structural anomalies or defects were logged."present": false✗Red (#CC2222)
+- Component missing, removed, or completely unaccounted for.
+- Additionally, whenever "damage": true is evaluated, an independent, high-visibility red ! alert marker is stamped into the isolated DAMAGE NOTED table column to let viewers parse mechanical deficiencies at a glance.
+- Technical RequirementsBashpip install python-pptx pyyaml Pillow Python 3.10+
 
 ### Usage SyntaxBash# Generate reports for ALL inspection folders found in inspections/
 python generate_report.py
