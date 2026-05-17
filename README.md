@@ -21,6 +21,8 @@ For each BA number, the script reads a JSON data file and a folder of photos, th
 - **Auto-paginated photo grids:** Slides featuring a structured 10x2 photo canvas with automatic image compression and layout handling.
 
 ### Heading
+
+---
 inspections/└── BA3085/├── inspection_data.json     ← unit details + checklist entries├── inspection_checklist.md  ← human-readable checklist (optional reference)└── photos/                  ← any number of images, any size├── vin.jpg              ← explicitly named VIN/PIN image (forced to Slot 1)├── photo_01.jpg└── ...output/└── BA3085_CONDITION_INSPECTION_REPORT.pptx
 ---
 
@@ -62,6 +64,7 @@ The array mapping loops through items in the order defined by the `checklist_ite
   "damage": false, 
   "comments": "All in-tact, needs a good wash" 
 }
+```
 
 
 Row Entry String Matching: The checkpoint identifier matches your config blueprint text (e.g. PAINTWORK).Presence Matrix (present): Determines whether the element exists on the physical asset. 
