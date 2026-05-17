@@ -62,6 +62,8 @@ The array mapping loops through items in the order defined by the `checklist_ite
   "damage": false, 
   "comments": "All in-tact, needs a good wash" 
 }
+
+
 Row Entry String Matching: The checkpoint identifier matches your config blueprint text (e.g. PAINTWORK).Presence Matrix (present): Determines whether the element exists on the physical asset. 
 If false, it sets a high-visibility condition.Damage Exception Matrix (damage): Identifies if structural compromises were flagged during structural review.
 Comments Extraction (comments): Grabs loose textual records and bounds them into the text box container with automatic character-wrapping limits.
