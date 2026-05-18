@@ -160,3 +160,10 @@ Dynamic Overflow Management: If a folder contains more images than the maximum p
 
 ## 15/05/2026 09:53:00
 **Magic, I think we have a MVP!!!!**
+
+
+18/05/2026 12:45
+Added file directory-manifest.py to do a directory search of the pictures.
+This will open the pictures in the folder where it lives.
+This is because that trying to copy these files from source to destination on this network is painful!!
+so if picture files can be opened at its own location, then having to copy again is a good thing.
