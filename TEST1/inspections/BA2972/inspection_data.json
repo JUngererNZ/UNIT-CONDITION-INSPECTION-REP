@@ -1,0 +1,31 @@
+{
+  "ba_number": "BA2972",
+  "unit_description": "CATERPILLAR 426 07A BACKHOE LOADER",
+  "serial_number": "CC210768",
+  "vin": "CAT00426VJZ404202",
+  "inspection_date": "15/05/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION. NO CHANGES TO CONDITION.",
+
+  "checklist": {
+    "PAINTWORK":                          { "present": true,  "damage": false, "comments": "All in-tact, needs fresh paint" },
+    "BODY WORK":                          { "present": true,  "damage": false, "comments": "All in-tact, needs fresh paint" },
+    "WINDOWS":                            { "present": true,  "damage": true, "comments": "All in-tact, needs lots of windowlene 'cos of the bird poo" },
+    "DECALS":                             { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
+    "ALL LIGHTS":                         { "present": true,  "damage": false, "comments": "All in-tact, working when battery plugged in" },
+    "BATTERIES":                          { "present": true,  "damage": false, "comments": "Removed for safekeeping & improved starting" },
+    "MIRRORS":                            { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
+    "RADIO / AERIAL":                     { "present": true,  "damage": false, "comments": "No radio — aerial stored in compartment" },
+    "KEYS":                               { "present": true,  "damage": false, "comments": "3x keys in pouch (Operators manual bag)" },
+    "SPEAKERS":                           { "present": true,  "damage": false, "comments": "No radio" },
+    "ASHTRAY":                            { "present": false, "damage": false, "comments": "No radio" },
+    "OPERATORS MANUALS & PARTS MANUALS":  { "present": true,  "damage": false, "comments": "Found loose in container, storing in site office until unit loads out" },
+    "WIPER BLADES":                       { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
+    "TYRES / TRACKS":                     { "present": true,  "damage": false, "comments": "Stowed in container" },
+    "TOOL BOX":                           { "present": false, "damage": false, "comments": "Stowed in container" },
+    "LOOSE PARTS / CRATES":               { "present": true,  "damage": false, "comments": "In cab as per photos; In battery box as per photos; 3x unopened" },
+    "LOCKING PIN":                        { "present": true,  "damage": false, "comments": "N/A" }
+  },
+
+  "general_comments": "Stowed in container, together with general transit dirt & grime, machine is in excellent condition."
+}
