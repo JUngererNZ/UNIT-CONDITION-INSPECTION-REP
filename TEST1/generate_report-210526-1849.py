@@ -102,11 +102,49 @@ def _tick_colour(present: bool, damage: bool) -> RGBColor:
     return GREEN_OK
 
 
+def _get_priority_photo(inspection_dir: str, vin: str, pin: str = None) -> str | None:
+    """Find a priority photo matching VIN or PIN pattern."""
+    photo_dir = os.path.join(inspection_dir, "photos")
+    if not os.path.isdir(photo_dir):
+        return None
+    
+    # Patterns to check (case insensitive)
+    patterns = []
+    if vin:
+        patterns.append(f"*{vin}*.jpg")
+        patterns.append(f"*{vin}*.jpeg")
+        patterns.append(f"*{vin}*.png")
+        patterns.append(f"*{vin}*.JPG")
+        patterns.append(f"*{vin}*.JPEG")
+        patterns.append(f"*{vin}*.PNG")
+    if pin:
+        patterns.append(f"*{pin}*.jpg")
+        patterns.append(f"*{pin}*.jpeg")
+        patterns.append(f"*{pin}*.png")
+        patterns.append(f"*{pin}*.JPG")
+        patterns.append(f"*{pin}*.JPEG")
+        patterns.append(f"*{pin}*.PNG")
+    
+    # Also check for exact matches without wildcards
+    if vin:
+        exact_patterns = [f"{vin}.jpg", f"{vin}.jpeg", f"{vin}.png", 
+                          f"{vin}.JPG", f"{vin}.JPEG", f"{vin}.PNG"]
+        patterns.extend(exact_patterns)
+    if pin:
+        exact_patterns = [f"{pin}.jpg", f"{pin}.jpeg", f"{pin}.png",
+                          f"{pin}.JPG", f"{pin}.JPEG", f"{pin}.PNG"]
+        patterns.extend(exact_patterns)
+    
+    for pattern in patterns:
+        matches = glob.glob(os.path.join(photo_dir, pattern))
+        if matches:
+            return matches[0]  # Return first match
+    
+    return None
+
+
 def _photos_for_inspection(inspection_dir: str, vin: str = None, pin: str = None) -> list[str]:
-    """
-    Get all photos, with VIN/PIN priority photo as the VERY FIRST image.
-    The priority photo will appear in the top-left position of the first photo slide.
-    """
+    """Get all photos, with VIN/PIN priority photo first."""
     photo_dir = os.path.join(inspection_dir, "photos")
     if not os.path.isdir(photo_dir):
         return []
@@ -120,43 +158,13 @@ def _photos_for_inspection(inspection_dir: str, vin: str = None, pin: str = None
     if not all_photos:
         return []
     
-    # Find the VIN/PIN photo - this will be moved to position 0
-    priority_photo = None
-    photo_dir_lower = photo_dir.lower()
+    # Find priority photo
+    priority_photo = _get_priority_photo(inspection_dir, vin, pin)
     
-    for photo in all_photos:
-        photo_name = os.path.basename(photo).upper()
-        
-        # Check if this photo contains VIN or PIN in the filename
-        if vin and vin.upper() in photo_name:
-            priority_photo = photo
-            print(f"  🎯 Found VIN photo: {os.path.basename(photo)}")
-            break
-        elif pin and pin.upper() in photo_name:
-            priority_photo = photo
-            print(f"  🎯 Found PIN photo: {os.path.basename(photo)}")
-            break
-    
-    # If no exact VIN/PIN match, look for keywords
-    if not priority_photo:
-        keywords = ['VIN', 'PIN', 'SERIAL', 'ID', 'PLATE', 'CHASSIS', 'FRAME', 'IDENT']
-        for photo in all_photos:
-            photo_name = os.path.basename(photo).upper()
-            for keyword in keywords:
-                if keyword in photo_name:
-                    priority_photo = photo
-                    print(f"  🎯 Found ID photo (contains '{keyword}'): {os.path.basename(photo)}")
-                    break
-            if priority_photo:
-                break
-    
-    # Move priority photo to the VERY FRONT (index 0) - this makes it the first image in the grid
     if priority_photo and priority_photo in all_photos:
+        # Move priority photo to front
         all_photos.remove(priority_photo)
         all_photos.insert(0, priority_photo)
-        print(f"  ⭐ Priority photo placed as FIRST image (top-left position)")
-    else:
-        print(f"  ℹ️  No VIN/PIN photo found - using default ordering")
     
     return all_photos
 
@@ -324,15 +332,15 @@ def generate_report(inspection_dir: str, config: dict, output_dir: str):
     vin = data.get("vin", "")
     pin = data.get("pin", "")  # Get PIN if present
     
-    print(f"  📋 VIN from data: {vin}")
-    print(f"  📋 PIN from data: {pin}")
-    
-    # Get photos with VIN/PIN priority photo as FIRST image
+    # Get photos with VIN/PIN priority photo first
     photos = _photos_for_inspection(inspection_dir, vin=vin, pin=pin)
     
     if photos:
-        print(f"  📸 Total photos found: {len(photos)}")
-        print(f"  📸 FIRST image (top-left position): {os.path.basename(photos[0])}")
+        print(f"  📸 Found {len(photos)} photo(s) for {ba}")
+        if vin and any(vin in os.path.basename(p) for p in photos[:1]):
+            print(f"  ⭐ Priority VIN photo placed first: {os.path.basename(photos[0])}")
+        elif pin and any(pin in os.path.basename(p) for p in photos[:1]):
+            print(f"  ⭐ Priority PIN photo placed first: {os.path.basename(photos[0])}")
     else:
         print(f"  📸 No photos found for {ba}")
     
