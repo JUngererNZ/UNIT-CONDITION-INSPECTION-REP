@@ -120,11 +120,12 @@ def scan_directory(target_dir, allowed_filenames=None):
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    TARGET_DIRECTORY = r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents"
-    OUTPUT_JSON_FILE = "directory_manifest.json"
+    # TARGET_DIRECTORY = r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents"
+    TARGET_DIRECTORY = r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents\BARTRAC\CARGO ON HOLD\Excavator stick repositioning photos 15.05.25"
+    OUTPUT_JSON_FILE = r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents\BARTRAC\CARGO ON HOLD\Excavator stick repositioning photos 15.05.25\directory_manifest.json"
     
     FILES_TO_INCLUDE = [
-        "IMG_9481.JPG - IMG_9543.JPG",
+        "IMG_0713.JPG - IMG_0798.JPG",
         "SAD500 - 2 UNITS.pdf"
     ]
     # ---------------------
