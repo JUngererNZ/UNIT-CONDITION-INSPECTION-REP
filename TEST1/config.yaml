@@ -30,23 +30,6 @@ report:
 
 # Checklist items rendered in the report table (order matters)
 checklist_items:
-  - PAINTWORK
-  - BODY WORK
-  - WINDOWS
-  - DECALS
-  - ALL LIGHTS
-  - BATTERIES
-  - MIRRORS
-  - RADIO / AERIAL
-  - KEYS
-  - SPEAKERS
-  - ASHTRAY
-  - OPERATORS MANUALS & PARTS MANUALS
-  - WIPER BLADES
-  - TYRES / TRACKS
-  - TOOL BOX
-  - LOOSE PARTS / CRATES
-  - LOCKING PIN
   - BUCKET - FRONT
   - BUCKET - REAR
   - BACKHOE
@@ -61,8 +44,14 @@ checklist_items:
   - LEFT REAR
   - RIGHT SIDE
   - LEFT SIDE
-  - WHEELS
+  - WHEELS/TRACKS
   - STARTING STATUS
-  - LASHING HOOKS
-  - CAB INTERIOR
+  - FORKS & STABILISER
+  - BOOM STICK
+  - BLADE
   - ENGINE BAY
+  - INTERIOR CAB
+  - INTERIOR BATTERY BAY
+  - ENGINE BAY
+  - INTERIOR CAB
+  - INTERIOR BATTERY BAY

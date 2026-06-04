@@ -1,15 +1,15 @@
 {
-  "ba_number": "BA2973",
+  "ba_number": "BA3035",
   "unit_description": "CATERPILLAR 426 07A BACKHOE LOADER",
-  "serial_number": "JZ404199; CC210772",
-  "vin": "CAT00426LJZ404199",
+  "serial_number": "JZ404402; CC210981",
+  "vin": "CAT00426EJZ404402",
   "inspection_date": "03/06/2026",
   "inspector": "FML Warehouse Team",
   "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION.",
 
   "checklist": {
-    "BUCKET - FRONT":                     { "present": true,  "damage": true, "comments": "Slight damage to bucket boom hinge, rubbing on container floor during voyage" },
-	"BUCKET - REAR":                      { "present": true,  "damage": false, "comments": "In order, nested in front bucket" },
+    "BUCKET - FRONT":                     { "present": true,  "damage": true, "comments": "Damage to RS grease nipple, rubbing on container floor during voyage" },
+	"BUCKET - REAR":                      { "present": true,  "damage": false, "comments": "All in order, nested in front bucket" },
 	"BACKHOE":                            { "present": true,  "damage": false, "comments": "All in order" },
 	"HYDRAULIC RAMS - FRONT":             { "present": true,  "damage": false, "comments": "All in order" },
 	"HYDRAULIC RAMS - REAR":              { "present": true,  "damage": false, "comments": "All in order" },

@@ -1,31 +1,35 @@
 {
   "ba_number": "BA3127",
   "unit_description": "CATERPILLAR D8GC TRACK TYPE TRACTOR",
-  "serial_number": "TXJ03072; TCD02740",
+  "serial_number": "KGX00841; TXJ03072",
   "vin": "CAT0000D8JKGX00841",
-  "inspection_date": "15/05/2026",
+  "inspection_date": "03/06/2026",
   "inspector": "FML Warehouse Team",
-  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION. NO CHANGES TO CONDITION.",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION.",
 
   "checklist": {
-    "PAINTWORK":                          { "present": true,  "damage": true, "comments": "All in-tact, needs fresh paint" },
-    "BODY WORK":                          { "present": true,  "damage": true, "comments": "All in-tact, needs fresh paint" },
-    "WINDOWS":                            { "present": true,  "damage": true, "comments": "All in-tact, needs lots of windowlene 'cos of the bird poo" },
-    "DECALS":                             { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
-    "ALL LIGHTS":                         { "present": true,  "damage": false, "comments": "All in-tact, working when battery plugged in" },
-    "BATTERIES":                          { "present": true,  "damage": false, "comments": "Removed for safekeeping & improved starting" },
-    "MIRRORS":                            { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
-    "RADIO / AERIAL":                     { "present": true,  "damage": false, "comments": "No radio — aerial stored in compartment" },
-    "KEYS":                               { "present": true,  "damage": false, "comments": "3x keys in torch (Operators manual bag)" },
-    "SPEAKERS":                           { "present": true,  "damage": false, "comments": "No radio" },
-    "ASHTRAY":                            { "present": false, "damage": false, "comments": "No radio" },
-    "OPERATORS MANUALS & PARTS MANUALS":  { "present": true,  "damage": false, "comments": "Found loose in container, storing in site office until unit loads out" },
-    "WIPER BLADES":                       { "present": true,  "damage": false, "comments": "All in-tact, needs a good wash" },
-    "TYRES / TRACKS":                     { "present": true,  "damage": false, "comments": "Stowed in container" },
-    "TOOL BOX":                           { "present": false, "damage": false, "comments": "Stowed in container" },
-    "LOOSE PARTS / CRATES":               { "present": true,  "damage": false, "comments": "In cab as per photos; In battery box as per photos; 3x unopened" },
-    "LOCKING PIN":                        { "present": true,  "damage": false, "comments": "N/A" }
+	"BUCKET - FRONT":                     { "present": true,  "damage": true, "comments": "Slight damage to bucket boom hinge, rubbing against BA2873 bucket in container" },
+	"BUCKET - REAR":                      { "present": true,  "damage": false, "comments": "In order, nested in front bucket" },
+	"BACKHOE":                            { "present": true,  "damage": false, "comments": "All in order" },
+	"HYDRAULIC RAMS - FRONT":             { "present": true,  "damage": false, "comments": "All in order" },
+	"HYDRAULIC RAMS - REAR":              { "present": true,  "damage": false, "comments": "All in order" },
+	"LOAD BIN":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"COUNTER WEIGHT":                     { "present": true,  "damage": false, "comments": "N/A" },
+	"RIGHT FRONT":                        { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT FRONT":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"RIGHT REAR":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT REAR":                          { "present": true,  "damage": false, "comments": "All in order" },
+	"RIGHT SIDE":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT SIDE":                          { "present": true,  "damage": false, "comments": "All in order" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "Wheels, stowed in container" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"FORKS & STABILISER":             	  { "present": true,  "damage": true, "comments": "All in order, slight surface rust" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order, package within as arrival stowed still" }
   },
 
-  "general_comments": "Stowed in container, together with general transit dirt & grime, machine is in excellent condition."
+  "general_comments": "Other than noted scratches, together with general transit dirt, grime & standing dust, machine is in excellent condition."
 }
+
