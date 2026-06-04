@@ -1,0 +1,33 @@
+{
+  "ba_number": "BA2797-22.04.2025",
+  "unit_description": "CATERPILLAR 428-07A BACKHOE LOADER",
+  "serial_number": "L7D01960; C4Z14718",
+  "vin": "CAT00428KL7D01960",
+  "inspection_date": "22/04/2025",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION.",
+
+  "checklist": {
+    "BUCKET - FRONT":                     { "present": true,  "damage": true, "comments": "Scratches to bucket, underside as recieved" },
+	"BUCKET - REAR":                      { "present": true,  "damage": false, "comments": "In order, nested in front bucket" },
+	"BACKHOE":                            { "present": true,  "damage": false, "comments": "All in order" },
+	"HYDRAULIC RAMS - FRONT":             { "present": true,  "damage": false, "comments": "All in order" },
+	"HYDRAULIC RAMS - REAR":              { "present": true,  "damage": false, "comments": "All in order" },
+	"LOAD BIN":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"COUNTER WEIGHT":                     { "present": false,  "damage": false, "comments": "N/A" },
+	"RIGHT FRONT":                        { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT FRONT":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"RIGHT REAR":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT REAR":                          { "present": true,  "damage": false, "comments": "All in order" },
+	"RIGHT SIDE":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"LEFT SIDE":                          { "present": true,  "damage": false, "comments": "All in order" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "All in order" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order" }
+  },
+
+  "general_comments": "Apart from mentioned scratches, as well as general transit dirt, grime & standing dust, machine is in excellent condition."
+}
