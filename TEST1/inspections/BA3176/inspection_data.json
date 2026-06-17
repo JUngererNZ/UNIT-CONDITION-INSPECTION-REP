@@ -13,7 +13,7 @@
 	"WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
 	"DECALS":             				  { "present": true,  "damage": false, "comments": "N/A" },
 	"ALL LIGHTS":              			  { "present": true,  "damage": false, "comments": "N/A" },
-	"LOAD BIN":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"BATTERIES":                          { "present": true,  "damage": false, "comments": "Removed for safekeeping & improved starting" },
 	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
 	"MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
 	"KEYS":                               { "present": true,  "damage": false, "comments": "2x Keys tagged" },
