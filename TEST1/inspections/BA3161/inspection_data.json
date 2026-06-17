@@ -1,0 +1,37 @@
+{
+  "ba_number": "BA3161",
+  "unit_description": "CATERPILLAR 395 HYDRAULIC EXCAVATOR (SKD)",
+  "serial_number": "SGD40155; HXY00190",
+  "vin": "CAT00395LSGD40155",
+  "inspection_date": "17/06/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION. NO CHANGES TO CONDITION.",
+
+  "checklist": {
+    "PAINTWORK":                     	  { "present": true,  "damage": false, "comments": "N/A" },
+	"BODYWORK":                           { "present": true,  "damage": false, "comments": "N/A" },
+	"WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"DECALS":             				  { "present": true,  "damage": false, "comments": "N/A" },
+	"ALL LIGHTS":              			  { "present": true,  "damage": false, "comments": "N/A" },
+	"BATTERIES":                          { "present": true,  "damage": false, "comments": "Removed for safekeeping & improved starting" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"RADIO / AERIAL":                     { "present": true,  "damage": false, "comments": "N/A" },
+	"KEYS":                               { "present": true,  "damage": false, "comments": "2x Keys tagged" },
+	"SPEAKERS":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"ASHTRAY":                            { "present": false,  "damage": false, "comments": "N/A" },
+	"MANUALS":                            { "present": true,  "damage": false, "comments": "Inside box behind drivers seat, unopened" },
+	"WIPER BLADES":                       { "present": true,  "damage": false, "comments": "N/A" },
+	"TOOL BOX":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "Tracks, none" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"PARTS / CRATES":                     { "present": true,  "damage": false, "comments": "1X Crate counter weight; 1X Crate PIN; 1x Crate walkway; 1x Crate cylinder; 1X Crate guard; 1X Crate stick" },
+	"BUCKET":                             { "present": true,  "damage": true, "comments": "Scratches to underside, transit handling prior to arrival" },
+	"BOOM":                               { "present": true,  "damage": false, "comments": "All in order" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order" }
+  },
+
+  "general_comments": "Other than surface rust and mentioned scratcvhes, together with general ytansit dirt, grime & standing dust, machine is in excellent condition."
+}
