@@ -354,30 +354,9 @@ def generate_report(inspection_dir: str, config: dict, output_dir: str):
                           photo_quality=photo_quality, 
                           photo_scale_factor=photo_scale_factor)
     
-    # ── Build the output filename (moved earlier for metadata) ──────────────
-    out_filename = config["report"].get(
-        "output_filename_pattern",
-        "{ba_number}_CONDITION_INSPECTION_REPORT.pptx"
-    ).format(ba_number=ba, date=date.today().strftime("%Y%m%d"))
-    
+    out_filename = config["report"].get("output_filename_pattern", "{ba_number}_CONDITION_INSPECTION_REPORT.pptx").format(ba_number=ba, date=date.today().strftime("%Y%m%d"))
     out_path = os.path.join(output_dir, out_filename)
     os.makedirs(output_dir, exist_ok=True)
-
-    # ── Set PPTX metadata (Core Properties) ──────────────────────────────────
-    prs.core_properties.title = out_filename          # Title = filename
-    prs.core_properties.author = "J Ungerer"          # Author fixed
-    prs.core_properties.keywords = out_filename       # Tags = filename
-    prs.core_properties.category = "INSPECTION_REPORT" # Category fixed
-    # Additional useful fields (optional)
-    prs.core_properties.subject = "Bartrac Unit Condition Inspection"
-    prs.core_properties.comments = (
-        f"Generated on {date.today().strftime('%Y-%m-%d')}. "
-        f"BA: {ba} | Serial: {data.get('serial_number', 'N/A')} | VIN: {data.get('vin', 'N/A')}"
-    )
-    prs.core_properties.last_modified_by = "FML Report Generator"
-    # ──────────────────────────────────────────────────────────────────────────
-
-    # Save the presentation
     prs.save(out_path)
     print(f"  ✅ Report saved: {out_path}")
     return out_path
