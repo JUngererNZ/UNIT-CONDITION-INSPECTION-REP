@@ -107,7 +107,7 @@ def main():
     parser.add_argument(
         'directory',
         nargs='?',
-        default=r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents\BARTRAC\CARGO TO ARRIVE AT DBN PORT\2606DSI2818 - BA3178 BA3204 BA3205 - 2 X CAT350 1 CAT395 - ON HOLD\PICS\WE PICS\BA3205",
+        default=r"C:\Users\Jason\FML Freight Solutions\FML Doc Share - Documents\BARTRAC\CARGO ON HOLD\FML BOND STORE\BA3179 - 2605DSI2808 - BA3179 - CAT395 HYD EXC - ON HOLD\PICS\WE PICS",
         help='Path to a folder; its parent will be listed (unless --no-parent is used)'
     )
     parser.add_argument(
