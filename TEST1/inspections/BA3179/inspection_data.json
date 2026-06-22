@@ -1,0 +1,35 @@
+{
+  "ba_number": "BA3205",
+  "unit_description": "CATERPILLAR 350-06C HYDRAULIC EXCAVATOR",
+  "serial_number": "WDP30539; NTB17723",
+  "vin": "CAT00350AWDP30539",
+  "inspection_date": "22/06/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM INSPECTION.",
+
+  "checklist": {
+    "PAINTWORK":                     	  { "present": true,  "damage": true, "comments": "Scratches to underside of bucket" },
+	"BODYWORK":                           { "present": true,  "damage": true, "comments": "Slight scratches to boom where bucket tucks in" },
+	"WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"DECALS":             				  { "present": true,  "damage": false, "comments": "N/A" },
+	"ALL LIGHTS":              			  { "present": true,  "damage": false, "comments": "N/A" },
+	"BATTERIES":                          { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"KEYS":                               { "present": true,  "damage": false, "comments": "2x Keys tagged" },
+	"SPEAKERS":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"ASHTRAY":                            { "present": false,  "damage": false, "comments": "N/A" },
+	"MANUALS":                            { "present": true,  "damage": false, "comments": "Inside box behind drivers seat, unopened" },
+	"WIPER BLADES":                       { "present": true,  "damage": false, "comments": "N/A" },
+	"TOOL BOX":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "Tracks, none" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"PARTS / CRATES":                     { "present": false,  "damage": false, "comments": "N/A" },
+	"LOCKING PIN":                     	  { "present": false,  "damage": false, "comments": "N/A" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order" }
+  },
+
+  "general_comments": "Other than mentioned scratches, together with general transit dirt, grime, machine is in excellent condition."
+}
