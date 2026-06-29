@@ -1,0 +1,31 @@
+{
+  "ba_number": "BA3130",
+  "unit_description": "CATERPILLAR 745-04A ARTICULATED TRUCK",
+  "serial_number": "TXW08745, 3F606660",
+  "vin": "CAT00745J3F606660",
+  "inspection_date": "29/06/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM LAST INSPECTION. NO CHANGES TO CONDITION.",
+
+  "checklist": {
+    "PAINTWORK":                          { "present": true,  "damage": true,  "comments": "Scratches to lashing hooks, transit voyage" },
+    "BODY WORK":                          { "present": true,  "damage": false,  "comments": "N/A" },
+    "WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
+    "DECALS":                             { "present": true,  "damage": false, "comments": "N/A" },
+    "ALL LIGHTS":                         { "present": true,  "damage": false, "comments": "N/A" },
+    "BATTERIES":                          { "present": true,  "damage": false, "comments": "N/A" },
+    "MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
+    "RADIO / AERIAL":                     { "present": false,  "damage": false, "comments": "N/A" },
+    "KEYS":                               { "present": true,  "damage": false, "comments": "1x Labelled and tagged, see photo" },
+    "SPEAKERS":                           { "present": false,  "damage": false, "comments": "N/A" },
+    "ASHTRAY":                            { "present": false, "damage": false, "comments": "N/A" },
+    "OPERATORS MANUALS & PARTS MANUALS":  { "present": true,  "damage": false, "comments": "Located in compartment under jump seat" },
+    "WIPER BLADES":                       { "present": true,  "damage": false, "comments": "N/A" },
+    "TYRES / TRACKS":                     { "present": true,  "damage": false, "comments": "N/A" },
+    "TOOL BOX":                           { "present": false, "damage": false, "comments": "N/A" },
+    "LOOSE PARTS / CRATES":               { "present": false,  "damage": false, "comments": "N/A" },
+    "LOCKING PIN":                        { "present": true,  "damage": false, "comments": "N/A" }
+  },
+
+  "general_comments": "Other than mentioned scratches to lashing hooks, together with general transit dirt & grime, machine is in excellent condition."
+}
