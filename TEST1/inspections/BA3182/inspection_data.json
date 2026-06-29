@@ -1,0 +1,36 @@
+{
+  "ba_number": "BA3182",
+  "unit_description": "CATERPILLAR 140GC-02A MOTOR GRADER",
+  "serial_number": "W9F00957; E7A70060",
+  "vin": "CAT00140KW9F00957",
+  "inspection_date": "29/06/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM INSPECTION.",
+
+  "checklist": {
+    "PAINTWORK":                     	  { "present": true,  "damage": true, "comments": "Scratches to lashing points" },
+	"BODYWORK":                           { "present": true,  "damage": false, "comments": "N/A" },
+	"WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"DECALS":             				  { "present": true,  "damage": false, "comments": "N/A" },
+	"ALL LIGHTS":              			  { "present": true,  "damage": false, "comments": "N/A" },
+	"BATTERIES":                          { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"KEYS":                               { "present": true,  "damage": false, "comments": "2x Keys tagged" },
+	"SPEAKERS":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"ASHTRAY":                            { "present": false,  "damage": false, "comments": "N/A" },
+	"MANUALS":                            { "present": true,  "damage": false, "comments": "Stored in compartment next to drivers seat, see photo" },
+	"WIPER BLADES":                       { "present": true,  "damage": false, "comments": "N/A" },
+	"TOOL BOX":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "Tracks, none" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"PARTS / CRATES":                     { "present": false,  "damage": false, "comments": "N/A" },
+	"LOCKING PIN":                     	  { "present": true,  "damage": false, "comments": "N/A" },
+	"BUCKET":                     	      { "present": true,  "damage": true, "comments": "Scratches to underside, use of forklift prior to arrival in bond store" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order" }
+  },
+
+  "general_comments": "Other than mentioned scratches to to lashing points, together with general transit dirt & grime, machine is in excellent condition."
+}
