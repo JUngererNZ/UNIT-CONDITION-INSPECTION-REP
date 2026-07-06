@@ -1,0 +1,35 @@
+{
+  "ba_number": "BA3129",
+  "unit_description": "CATERPILLAR CAT745 ADT",
+  "serial_number": "TXW08715; 3F606658",
+  "vin": "CAT00745C3F606658",
+  "inspection_date": "26/06/2026",
+  "inspector": "FML Warehouse Team",
+  "status_note": "NOTHING CHANGED TO THE CONDITION OF THE UNIT FROM INSPECTION.",
+
+  "checklist": {
+    "PAINTWORK":                     	  { "present": true,  "damage": true, "comments": "To lashing - Transit voyage" },
+	"BODYWORK":                           { "present": true,  "damage": false, "comments": "N/A" },
+	"WINDOWS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"DECALS":             				  { "present": true,  "damage": false, "comments": "N/A" },
+	"ALL LIGHTS":              			  { "present": true,  "damage": false, "comments": "N/A" },
+	"BATTERIES":                          { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"CAB":                                { "present": true,  "damage": false, "comments": "All in order, locked shut since arrival" },
+	"MIRRORS":                            { "present": true,  "damage": false, "comments": "N/A" },
+	"KEYS":                               { "present": true,  "damage": false, "comments": "1sx Keys tagged" },
+	"SPEAKERS":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"ASHTRAY":                            { "present": false,  "damage": false, "comments": "N/A" },
+	"MANUALS":                            { "present": true,  "damage": false, "comments": "Located in compartment under jump seat" },
+	"WIPER BLADES":                       { "present": true,  "damage": false, "comments": "N/A" },
+	"TOOL BOX":                           { "present": false,  "damage": false, "comments": "N/A" },
+	"WHEELS/TRACKS":                      { "present": true,  "damage": false, "comments": "Tyres, none" },
+	"STARTING STATUS":                    { "present": true,  "damage": false, "comments": "Batteries removed, safekeeping & improved starting capability" },
+	"PARTS / CRATES":                     { "present": false,  "damage": false, "comments": "N/A" },
+	"LOCKING PIN":                     	  { "present": false,  "damage": false, "comments": "N/A" },
+	"ENGINE BAY":                         { "present": true,  "damage": false, "comments": "All in order" },
+	"INTERIOR CAB":                       { "present": true,  "damage": false, "comments": "Locked shut, not opened or accessed since arrival" },
+	"INTERIOR BATTERY BAY":               { "present": true,  "damage": false, "comments": "All in order" }
+  },
+
+  "general_comments": "Other than mentioned scratches, together with general transit dirt, grime, machine is in excellent condition."
+}
